@@ -25,6 +25,7 @@ xjpapp:
   global:
     db-type: mysql
     crypt-key: 2017/10/10xianjingdaijiayou!!!
+    redis-session: xjp-app-session:
 
 
 logging:

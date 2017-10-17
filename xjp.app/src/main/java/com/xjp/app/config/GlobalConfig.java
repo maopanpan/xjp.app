@@ -23,6 +23,11 @@ public class GlobalConfig {
      **/
     private String cryptKey;
 
+    /**
+     * 用户标识
+     **/
+    private String redisSession;
+
     public String getDbType() {
         return dbType;
     }
@@ -37,5 +42,13 @@ public class GlobalConfig {
 
     public void setCryptKey(String cryptKey) {
         this.cryptKey = cryptKey;
+    }
+
+    public String getRedisSession() {
+        return redisSession;
+    }
+
+    public void setRedisSession(String redisSession) {
+        this.redisSession = redisSession;
     }
 }
