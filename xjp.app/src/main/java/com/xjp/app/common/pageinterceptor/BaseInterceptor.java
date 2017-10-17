@@ -18,7 +18,6 @@ import java.util.Properties;
  * @Description: 分页拦截器
  * @Date: 2017/10/12.
  **/
-@ConfigurationProperties(prefix = "myself")
 public abstract class BaseInterceptor implements Interceptor, Serializable {
 
     private static final long serialVersionUID = 1L;
