@@ -1,0 +1,54 @@
+<ehcache updateCheck="false" dynamicConfig="false">
+
+    <diskStore path="java.io.tmpdir"/>
+	
+	<cacheManagerEventListenerFactory class="" properties=""/>
+
+     <!-- 定义缓存策略
+		eternal="false"   				// 元素是否永恒,如果是就永不过期(必须设置)
+	  	maxEntriesLocalHeap="1000" 		// 堆内存中最大缓存对象数,0没有限制(必须设置)
+	  	overflowToDisk="false"  		// 当缓存达到maxElementsInMemory值是,是否允许溢出到磁盘(必须设置)
+	  	diskPersistent="false"  		// 磁盘缓存在VM重新启动时是否保持(默认为false)
+	  	timeToIdleSeconds="0" 			// 导致元素过期的访问间隔(秒为单位). 当eternal为false时，这个属性才有效，0表示可以永远空闲,默认为0
+	  	timeToLiveSeconds="600" 		// 元素在缓存里存在的时间(秒为单位). 0 表示永远存在不过期
+	  	memoryStoreEvictionPolicy="LFU" // 当达到maxElementsInMemory时,如何强制进行驱逐默认使用"最近使用(LRU)"策略,其它还有先入先出FIFO,最少使用LFU,较少使用LRU
+	  	
+    <defaultCache eternal="false" maxEntriesLocalHeap="0" timeToIdleSeconds="300" timeToLiveSeconds="300"/>
+   -->
+    <!-- 默认永不过期 -->
+    <defaultCache
+        maxElementsInMemory="50000000"
+        eternal="true"
+        timeToIdleSeconds="0"
+        timeToLiveSeconds="0"
+        overflowToDisk="true">
+    </defaultCache>
+
+    <!--Predefined caches.  Add your cache configuration settings here.
+        If you do not have a configuration for your cache a WARNING will be issued when the
+        CacheManager starts
+
+        The following attributes are required for defaultCache:
+
+        name              - Sets the name of the cache. This is used to identify the cache. It must be unique.
+        maxInMemory       - Sets the maximum number of objects that will be created in memory
+        eternal           - Sets whether elements are eternal. If eternal,  timeouts are ignored and the element
+                            is never expired.
+        timeToIdleSeconds - Sets the time to idle for an element before it expires. Is only used
+                            if the element is not eternal. Idle time is now - last accessed time
+        timeToLiveSeconds - Sets the time to live for an element before it expires. Is only used
+                            if the element is not eternal. TTL is now - creation time
+        overflowToDisk    - Sets whether elements can overflow to disk when the in-memory cache
+                            has reached the maxInMemory limit.
+
+        -->
+
+    <cache name="session"
+        maxElementsInMemory="5000"
+        eternal="false"
+        timeToIdleSeconds="1800"
+        timeToLiveSeconds="1800"
+        overflowToDisk="false"
+        />
+		
+</ehcache>
