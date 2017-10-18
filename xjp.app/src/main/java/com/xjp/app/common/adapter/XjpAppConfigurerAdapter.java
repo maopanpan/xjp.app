@@ -1,6 +1,7 @@
 package com.xjp.app.common.adapter;
 
-import com.xjp.app.common.interceptor.XjpAppInterceptor;
+import com.xjp.app.common.interceptor.exception.ErrorInterceptor;
+import com.xjp.app.common.interceptor.xjp.XjpAppInterceptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
@@ -26,6 +27,7 @@ public class XjpAppConfigurerAdapter extends WebMvcConfigurerAdapter {
          */
 
         //添加拦截器
+        registry.addInterceptor(new ErrorInterceptor()).addPathPatterns("/**");
         registry.addInterceptor(new XjpAppInterceptor()).addPathPatterns("/user/**");
         super.addInterceptors(registry);
     }

@@ -2,7 +2,7 @@ package com.xjp.app.example;
 
 import com.alibaba.fastjson.JSON;
 import com.xjp.app.BaseTest;
-import com.xjp.app.common.pageinterceptor.Page;
+import com.xjp.app.common.interceptor.pageinterceptor.Page;
 import com.xjp.app.model.example.SysUser;
 import com.xjp.app.service.example.UserService;
 import org.junit.Assert;

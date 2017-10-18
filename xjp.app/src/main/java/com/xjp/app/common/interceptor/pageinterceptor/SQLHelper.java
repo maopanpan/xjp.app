@@ -1,4 +1,4 @@
-package com.xjp.app.common.pageinterceptor;
+package com.xjp.app.common.interceptor.pageinterceptor;
 
 import com.xjp.app.common.aware.SpringBeanHolder;
 import com.xjp.app.common.dialect.Dialect;

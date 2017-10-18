@@ -1,8 +1,8 @@
 package com.xjp.app.config.db;
 
 import com.alibaba.druid.pool.DruidDataSource;
-import com.xjp.app.common.pageinterceptor.Page;
-import com.xjp.app.common.pageinterceptor.PaginationInterceptor;
+import com.xjp.app.common.interceptor.pageinterceptor.Page;
+import com.xjp.app.common.interceptor.pageinterceptor.PaginationInterceptor;
 import com.xjp.app.common.annotation.MyBatisDao;
 import org.apache.ibatis.plugin.Interceptor;
 import org.mybatis.spring.SqlSessionFactoryBean;

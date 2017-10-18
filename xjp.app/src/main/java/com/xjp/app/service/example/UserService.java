@@ -1,6 +1,6 @@
 package com.xjp.app.service.example;
 
-import com.xjp.app.common.pageinterceptor.Page;
+import com.xjp.app.common.interceptor.pageinterceptor.Page;
 import com.xjp.app.model.example.SysUser;
 
 import java.util.Map;

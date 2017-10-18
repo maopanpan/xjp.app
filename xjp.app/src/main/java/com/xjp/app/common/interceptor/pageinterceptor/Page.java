@@ -1,4 +1,4 @@
-package com.xjp.app.common.pageinterceptor;
+package com.xjp.app.common.interceptor.pageinterceptor;
 
 import java.util.ArrayList;
 import java.util.List;

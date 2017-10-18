@@ -1,7 +1,7 @@
 package com.xjp.app.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.xjp.app.common.pageinterceptor.Page;
+import com.xjp.app.common.interceptor.pageinterceptor.Page;
 
 import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;

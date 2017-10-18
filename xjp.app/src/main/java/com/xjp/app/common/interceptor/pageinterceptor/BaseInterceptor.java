@@ -1,4 +1,4 @@
-package com.xjp.app.common.pageinterceptor;
+package com.xjp.app.common.interceptor.pageinterceptor;
 
 import com.xjp.app.common.aware.SpringBeanHolder;
 import com.xjp.app.common.dialect.Dialect;
@@ -8,7 +8,6 @@ import com.xjp.app.utils.ReflectionUtil;
 import org.apache.ibatis.logging.Log;
 import org.apache.ibatis.logging.LogFactory;
 import org.apache.ibatis.plugin.Interceptor;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.io.Serializable;
 import java.util.Properties;

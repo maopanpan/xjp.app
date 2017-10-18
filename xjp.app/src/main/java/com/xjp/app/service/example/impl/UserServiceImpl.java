@@ -1,6 +1,6 @@
 package com.xjp.app.service.example.impl;
 
-import com.xjp.app.common.pageinterceptor.Page;
+import com.xjp.app.common.interceptor.pageinterceptor.Page;
 import com.xjp.app.dao.example.UserDao;
 import com.xjp.app.model.example.SysUser;
 import com.xjp.app.service.BaseService;

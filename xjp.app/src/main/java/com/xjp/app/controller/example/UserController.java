@@ -1,6 +1,6 @@
 package com.xjp.app.controller.example;
 
-import com.xjp.app.common.pageinterceptor.Page;
+import com.xjp.app.common.interceptor.pageinterceptor.Page;
 import com.xjp.app.model.example.SysUser;
 import com.xjp.app.service.example.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package com.xjp.app.service;
 
-import com.xjp.app.common.pageinterceptor.Page;
+import com.xjp.app.common.interceptor.pageinterceptor.Page;
 import com.xjp.app.dao.BaseDao;
 import com.xjp.app.model.BaseEntity;
 import org.springframework.beans.factory.annotation.Autowired;

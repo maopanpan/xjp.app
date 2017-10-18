@@ -1,4 +1,4 @@
-package com.xjp.app.common.pageinterceptor;
+package com.xjp.app.common.interceptor.pageinterceptor;
 
 import com.xjp.app.utils.ReflectionUtil;
 import org.apache.commons.lang3.StringUtils;
