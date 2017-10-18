@@ -9,7 +9,7 @@ public class Constants {
 
     /**
      * 定义用户标识
-     **/
+     */
     public static final String REDISSESSION = "xjp-app-session:";
 
     /**

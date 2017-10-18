@@ -1,4 +1,4 @@
-package com.xjp.app.common.adapter;
+package com.xjp.app.common.interceptor;
 
 import com.xjp.app.common.interceptor.exception.ErrorInterceptor;
 import com.xjp.app.common.interceptor.xjp.XjpAppInterceptor;

@@ -43,7 +43,7 @@ public class XjpAppInterceptor implements HandlerInterceptor {
         String accessToken = request.getParameter("accessToken");
         PrintWriter pw = null;
         if (!StringUtils.isEmpty(accessToken)) {
-            Object object = redisTemplate.get(accessToken);
+            Object object = redisTemplate.getStrVal(accessToken);
             if (object != null) {
                 return true;
             } else {
@@ -65,7 +65,5 @@ public class XjpAppInterceptor implements HandlerInterceptor {
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-        int status = response.getStatus();
-        System.out.println(status);
     }
 }

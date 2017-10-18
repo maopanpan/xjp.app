@@ -27,11 +27,13 @@ public class ErrorInterceptor implements HandlerInterceptor {
         ResponseObject responseObject = null;
         if (status == 404) {
             responseObject = new ResponseObject(Constants.CODE_06, Constants.DESC_06, "");
+            PrintUtil.print(response, JSON.toJSONString(responseObject));
         } else if (status == 500) {
             responseObject = new ResponseObject(Constants.CODE_08, Constants.DESC_08, "");
+            PrintUtil.print(response, JSON.toJSONString(responseObject));
         }
 
-        PrintUtil.print(response, JSON.toJSONString(responseObject));
+
     }
 
     @Override
