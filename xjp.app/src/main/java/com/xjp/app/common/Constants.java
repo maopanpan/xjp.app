@@ -34,7 +34,7 @@ public class Constants {
     public static final String DESC_05 = "文件上传失败";
 
     public static final String CODE_06 = "000006";
-    public static final String DESC_06 = "不支持的操作类型";
+    public static final String DESC_06 = "访问地址不存在";
 
     public static final String CODE_07 = "000007";
     public static final String DESC_07 = "accessToken异常";
