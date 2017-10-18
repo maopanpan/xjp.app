@@ -7,6 +7,7 @@ import com.xjp.app.service.BaseService;
 import com.xjp.app.service.example.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Map;
 
@@ -22,7 +23,8 @@ public class UserServiceImpl extends BaseService<UserDao, SysUser> implements Us
     private UserDao userDao;
 
     @Override
-    public void saveSysUser(Map<String, Object> params) {
+    @Transactional(rollbackFor = Exception.class)
+    public void saveSysUser(Map<String, Object> params) throws Exception {
         userDao.saveSysUser(params);
     }
 

@@ -30,3 +30,42 @@ xjpapp:
 logging:
   config: classpath:config/logback-dev.xml
   level: info
+
+security:
+  user:
+    name: maopanpan
+    password: 123456
+  basic:
+    enabled: true
+    path: /system
+management:
+  port: 54001
+  context-path: /system
+  security:
+    enabled: true
+    roles: SUPERUSER
+
+
+info:
+  app:
+    name: "com.demo"
+    description: "#########"
+    version: "1.0"
+    spring-boot-version: "1.5.1"
+
+endpoints:
+  health:
+    sensitive: false
+    enabled: true
+  mappings:
+    sensitive: false
+    enabled: true
+  autoconfig:
+    sensitive: true
+    enabled: true
+  configprops:
+    sensitive: true
+    enabled: true
+  metrics:
+    sensitive: true
+    enabled: true

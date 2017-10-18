@@ -12,7 +12,7 @@ import java.util.Map;
  **/
 public interface UserService {
 
-    public void saveSysUser(Map<String, Object> params);
+    public void saveSysUser(Map<String, Object> params) throws Exception;
 
     public SysUser findById(Map<String, Object> params);
 

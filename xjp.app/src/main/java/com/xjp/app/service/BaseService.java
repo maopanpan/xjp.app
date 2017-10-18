@@ -4,6 +4,8 @@ import com.xjp.app.common.interceptor.pageinterceptor.Page;
 import com.xjp.app.dao.BaseDao;
 import com.xjp.app.model.BaseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -12,6 +14,7 @@ import java.util.List;
  * @Description:
  * @Date: 2017/10/16.
  **/
+@Transactional(readOnly = true)
 public abstract class BaseService<B extends BaseDao<T>, T extends BaseEntity<T>> {
 
     @Autowired

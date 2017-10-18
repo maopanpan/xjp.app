@@ -3,6 +3,7 @@ package com.xjp.app.controller.example;
 import com.xjp.app.common.interceptor.pageinterceptor.Page;
 import com.xjp.app.model.example.SysUser;
 import com.xjp.app.service.example.UserService;
+import com.xjp.app.vo.app.ResponseObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +19,7 @@ import java.util.Map;
  * @Date: 2017/10/12.
  **/
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/app/user")
 public class UserController {
 
     @Autowired
@@ -34,7 +35,21 @@ public class UserController {
 
     @GetMapping("/findPage")
     public Object findPage() {
-        Page<SysUser> page =  userService.findPage(new Page<SysUser>(), new SysUser());
+        Page<SysUser> page = userService.findPage(new Page<SysUser>(), new SysUser());
         return page;
+    }
+
+    @GetMapping("/register")
+    public Object register(@RequestParam(value = "id", required = true) String id, @RequestParam(value = "name", required = true) String name,
+                           @RequestParam(value = "idCard", required = true) String idCard, @RequestParam(value = "age", required = true) int age) throws Exception {
+        Map<String, Object> params = new HashMap<>();
+       // params.put("id", id);
+        params.put("name", name);
+        params.put("idCard", idCard);
+        params.put("age", age);
+        userService.saveSysUser(params);
+
+        ResponseObject responseObject = new ResponseObject(params);
+        return responseObject;
     }
 }

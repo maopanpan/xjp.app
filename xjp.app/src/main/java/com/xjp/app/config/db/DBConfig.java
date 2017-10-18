@@ -12,6 +12,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 
@@ -23,6 +24,7 @@ import javax.sql.DataSource;
 @Configuration
 @MapperScan(basePackages = DBConfig.PACKAGE, sqlSessionFactoryRef = "sqlSessionFactory", annotationClass = MyBatisDao.class)
 @ConfigurationProperties(prefix = "xjpapp.mybatis")
+@EnableTransactionManagement
 public class DBConfig {
 
     // 精确到 master 目录，以便跟其他数据源隔离
