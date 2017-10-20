@@ -2,15 +2,56 @@ package com.xjp.app.common;
 
 /**
  * @Author: maopanpan
- * @Description: 全局量
+ * @Description: 全局变量
  * @Date: 2017/10/18.
  **/
 public class Constants {
+    /**
+     * REDIS数据库划分
+     */
+
+    //存储SESSION
+    public static final int _0 = 0;
+    //存储分布式锁
+    public static final int _1 = 1;
+    //未分配
+    public static final int _2 = 2;
+    //未分配
+    public static final int _3 = 3;
+    //未分配
+    public static final int _4 = 4;
+    //未分配
+    public static final int _5 = 5;
+    //未分配
+    public static final int _6 = 6;
+    //未分配
+    public static final int _7 = 7;
+    //未分配
+    public static final int _8 = 8;
+    //未分配
+    public static final int _9 = 9;
+    //未分配
+    public static final int _10 = 10;
+    //未分配
+    public static final int _11 = 11;
+    //未分配
+    public static final int _12 = 12;
+    //未分配
+    public static final int _13 = 13;
+    //未分配
+    public static final int _14 = 14;
+    //测试
+    public static final int _15 = 15;
 
     /**
      * 定义用户标识
      */
     public static final String REDISSESSION = "xjp-app-session:";
+
+    /**
+     * SESSION生命周期30天
+     */
+    public static final int LIVESECONDS = 10 * 60;
 
     /**
      * 系统变量

@@ -2,9 +2,11 @@ package com.xjp.app.redis;
 
 import com.xjp.app.BaseTest;
 
-import com.xjp.app.config.redis.Lock;
-import com.xjp.app.config.redis.RedisLock;
-import com.xjp.app.config.redis.RedisTemplate;
+import com.xjp.app.common.Constants;
+import com.xjp.app.common.locks.Lock;
+import com.xjp.app.common.locks.RedisLock;
+import com.xjp.app.common.manager.JedisManager;
+import com.xjp.app.common.manager.JedisSessionManager;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,11 +22,23 @@ public class RedisTest extends BaseTest {
     private Logger logger = LoggerFactory.getLogger(RedisTest.class);
 
     @Autowired
-    private RedisTemplate redisTemplate;
+    private JedisManager jedisManager;
+    @Autowired
+    private JedisSessionManager jedisSessionManager;
     @Autowired
     private RedisLock redisLock;
 
     @Test
+    public void test() {
+        try {
+            jedisSessionManager.saveSession("15011479990", "abcdefafsdfsf");
+            jedisSessionManager.expire("15011479990");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    //@Test
     public void incr() {
         Lock lock = new Lock("localLock", "localLock");
 
@@ -33,7 +47,7 @@ public class RedisTest extends BaseTest {
             public void run() {
                 while (true) {
                     if (redisLock.tryLock(lock)) {
-                        redisTemplate.incr("id");
+                        jedisManager.incr(Constants._15,"id");
                         redisLock.releaseLock(lock);
                     }
                 }
@@ -45,7 +59,7 @@ public class RedisTest extends BaseTest {
             public void run() {
                 while (true) {
                     if (redisLock.tryLock(lock)) {
-                        redisTemplate.incr("id");
+                        jedisManager.incr(Constants._15,"id");
                         redisLock.releaseLock(lock);
                     }
                 }

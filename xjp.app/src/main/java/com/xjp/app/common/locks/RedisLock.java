@@ -1,5 +1,7 @@
-package com.xjp.app.config.redis;
+package com.xjp.app.common.locks;
 
+import com.xjp.app.common.Constants;
+import com.xjp.app.common.manager.JedisManager;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,8 +32,10 @@ public class RedisLock {
      **/
     private final static int LOCK_TRY_TIMEOUT = 20 * 1000;
 
+    private int dbIndex = Constants._1;
+
     @Autowired
-    private RedisTemplate redisTemplate;
+    JedisManager jedisManager;
 
 
     /**
@@ -92,13 +96,13 @@ public class RedisLock {
      */
     public boolean getLock(Lock lock, long timeout, long tryInterval, int lockExpireTime) {
         try {
-            if (StringUtils.isEmpty(lock.getName()) || StringUtils.isEmpty(lock.getValue())) {
+            if (StringUtils.isEmpty(lock.getName()) || StringUtils.isEmpty(lock.getValue()))
                 return false;
-            }
+
             long startTime = System.currentTimeMillis();
             do {
-                if (!redisTemplate.hasKey(lock.getName())) {
-                    redisTemplate.set(lock.getName(), lock.getValue(), lockExpireTime);
+                if (!jedisManager.hasKey(dbIndex, lock.getName())) {
+                    jedisManager.set(dbIndex, lock.getName(), lock.getValue(), lockExpireTime);
                     //logger.info("redis获得锁");
                     return true;
                 } else {//存在锁
@@ -111,7 +115,7 @@ public class RedisLock {
                 }
                 Thread.sleep(tryInterval);
             }
-            while (redisTemplate.hasKey(lock.getName()));
+            while (jedisManager.hasKey(dbIndex, lock.getName()));
         } catch (Exception e) {
             logger.error("分布式锁异常！", e);
             e.printStackTrace();
@@ -123,9 +127,9 @@ public class RedisLock {
      * 释放锁
      */
     public void releaseLock(Lock lock) {
-        if (!StringUtils.isEmpty(lock.getName())) {
-            redisTemplate.deleteKey(lock.getName());
-        }
+        if (!StringUtils.isEmpty(lock.getName()))
+            jedisManager.remove(dbIndex, lock.getName());
+
     }
 
 }

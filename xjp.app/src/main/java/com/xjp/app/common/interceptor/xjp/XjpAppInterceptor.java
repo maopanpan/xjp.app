@@ -3,8 +3,9 @@ package com.xjp.app.common.interceptor.xjp;
 import com.alibaba.fastjson.JSON;
 import com.xjp.app.common.Constants;
 import com.xjp.app.common.aware.SpringBeanHolder;
+import com.xjp.app.common.manager.JedisManager;
+import com.xjp.app.common.manager.JedisSessionManager;
 import com.xjp.app.config.GlobalConfig;
-import com.xjp.app.config.redis.RedisTemplate;
 import com.xjp.app.utils.PrintUtil;
 import com.xjp.app.vo.app.ResponseObject;
 import org.apache.commons.lang.StringUtils;
@@ -29,22 +30,19 @@ public class XjpAppInterceptor implements HandlerInterceptor {
     private Logger logger = LoggerFactory.getLogger(XjpAppInterceptor.class);
 
     /**
-     * Redis模板
+     * SESSION管理器
      */
-    private RedisTemplate redisTemplate;
-
-    public XjpAppInterceptor() {
-        //获取共享资源Redis模板
-        redisTemplate = (RedisTemplate) SpringBeanHolder.getBean("redisTemplate");
-    }
+    final static JedisSessionManager jedisSessionManager = (JedisSessionManager) SpringBeanHolder.getBean("jedisSessionManager");
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String accessToken = request.getParameter("accessToken");
         PrintWriter pw = null;
         if (!StringUtils.isEmpty(accessToken)) {
-            Object object = redisTemplate.getStrVal(accessToken);
+            Object object = jedisSessionManager.getSession(accessToken);
             if (object != null) {
+                //刷新SESSION
+                jedisSessionManager.expire(accessToken);
                 return true;
             } else {
                 ResponseObject responseObject = new ResponseObject(Constants.CODE_01, Constants.DESC_01, "");

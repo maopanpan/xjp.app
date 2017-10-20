@@ -1,4 +1,4 @@
-package com.xjp.app.config.redis;
+package com.xjp.app.common.locks;
 
 /**
  * @Author: maopanpan

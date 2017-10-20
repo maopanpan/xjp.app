@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * @Author: maopanpan
- * @Description:
+ * @Description: 系统异常处理
  * @Date: 2017/10/18.
  **/
 public class ErrorInterceptor implements HandlerInterceptor {

@@ -26,9 +26,10 @@ public class XjpAppConfigurerAdapter extends WebMvcConfigurerAdapter {
          *  addPathPatterns 配置拦截路径
          */
 
-        //添加拦截器
+        //对为所有方法进行异常拦截
         registry.addInterceptor(new ErrorInterceptor()).addPathPatterns("/**");
-        registry.addInterceptor(new XjpAppInterceptor()).excludePathPatterns("/system/**").excludePathPatterns("/app/user/register").addPathPatterns("/app/**");
+        //拦截用户标识accessToken
+        registry.addInterceptor(new XjpAppInterceptor()).excludePathPatterns("/app/user/register").addPathPatterns("/app/**");
         super.addInterceptors(registry);
     }
 }
